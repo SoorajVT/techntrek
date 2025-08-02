@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trek n Tech - Where Curiosity Meets Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+        }
+        
+        .orange-gradient {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+        }
+        
+        .tech-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .typing-animation::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 orange-gradient rounded-full flex items-center justify-center">
+                        <i class="fas fa-mountain text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold">Trek n Tech</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link hover:text-orange-400 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-orange-400 transition-colors">About</a>
+                    <a href="#content" class="nav-link hover:text-orange-400 transition-colors">Content</a>
+                    <a href="#journey" class="nav-link hover:text-orange-400 transition-colors">Journey</a>
+                    <a href="#contact" class="nav-link hover:text-orange-400 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-white hover:text-orange-400">Home</a>
+                <a href="#about" class="block px-3 py-2 text-white hover:text-orange-400">About</a>
+                <a href="#content" class="block px-3 py-2 text-white hover:text-orange-400">Content</a>
+                <a href="#journey" class="block px-3 py-2 text-white hover:text-orange-400">Journey</a>
+                <a href="#contact" class="block px-3 py-2 text-white hover:text-orange-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg tech-pattern flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/50 to-slate-900"></div>
+        <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+            <div class="float-animation mb-8">
+                <div class="w-32 h-32 mx-auto orange-gradient rounded-full flex items-center justify-center mb-6 pulse-glow">
+                    <i class="fas fa-rocket text-white text-4xl"></i>
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                Trek <span class="text-orange-400">n</span> Tech
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-slate-300">
+                Where <span class="typing-text text-orange-400 font-semibold"></span>
+            </p>
+            <p class="text-lg mb-12 max-w-3xl mx-auto text-slate-400 leading-relaxed">
+                Your digital passport to a world of discovery! We blend cutting-edge tech, fascinating AI insights, 
+                breathtaking travel stories, and mouthwatering food experiences.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#content" class="orange-gradient px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                    Explore Content
+                </a>
+                <a href="https://youtube.com" target="_blank" class="bg-red-600 px-8 py-4 rounded-full font-semibold hover:bg-red-700 transition-all transform hover:scale-105 flex items-center space-x-2">
+                    <i class="fab fa-youtube"></i>
+                    <span>Subscribe</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Floating Icons -->
+        <div class="absolute top-20 left-10 text-orange-400 opacity-20 float-animation" style="animation-delay: -1s;">
+            <i class="fas fa-robot text-4xl"></i>
+        </div>
+        <div class="absolute bottom-20 right-10 text-blue-400 opacity-20 float-animation" style="animation-delay: -3s;">
+            <i class="fas fa-plane text-3xl"></i>
+        </div>
+        <div class="absolute top-1/2 left-20 text-green-400 opacity-20 float-animation" style="animation-delay: -2s;">
+            <i class="fas fa-utensils text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">About <span class="text-orange-400">Trek n Tech</span></h2>
+                <p class="text-xl text-slate-400 max-w-3xl mx-auto">
+                    Based in Kerala, we connect local flavor with global vibes, unraveling the latest in AI while trekking to hidden gems across the globe.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-slate-700/50 p-8 rounded-2xl backdrop-blur-sm border border-slate-600 reveal">
+                    <div class="w-16 h-16 orange-gradient rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-brain text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">AI & Tech</h3>
+                    <p class="text-slate-400 text-center">
+                        Simple, practical breakdowns of cutting-edge technology and artificial intelligence trends that matter to everyone.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-slate-700/50 p-8 rounded-2xl backdrop-blur-sm border border-slate-600 reveal">
+                    <div class="w-16 h-16 bg-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-map-marked-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Travel Stories</h3>
+                    <p class="text-slate-400 text-center">
+                        Scenic travel vlogs from Kerala and beyond, featuring breathtaking destinations and cultural experiences.
+                    </p>
+                </div>
+                
+                <div class="card-hover bg-slate-700/50 p-8 rounded-2xl backdrop-blur-sm border border-slate-600 reveal">
+                    <div class="w-16 h-16 bg-green-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-utensils text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-center">Food Adventures</h3>
+                    <p class="text-slate-400 text-center">
+                        Authentic food hunts and street food stories that celebrate local flavors and culinary traditions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Types Section -->
+    <section id="content" class="py-20 gradient-bg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">What We <span class="text-orange-400">Create</span></h2>
+                <p class="text-xl text-slate-400">Smart content, soulful journeys, and spicy bites!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-hover bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm border border-slate-700 text-center reveal">
+                    <i class="fas fa-microchip text-orange-400 text-3xl mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Tech Reviews</h4>
+                    <p class="text-slate-400 text-sm">Latest gadgets and tools</p>
+                </div>
+                
+                <div class="card-hover bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm border border-slate-700 text-center reveal">
+                    <i class="fas fa-robot text-blue-400 text-3xl mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">AI Insights</h4>
+                    <p class="text-slate-400 text-sm">Simplified AI trends</p>
+                </div>
+                
+                <div class="card-hover bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm border border-slate-700 text-center reveal">
+                    <i class="fas fa-video text-red-400 text-3xl mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Travel Vlogs</h4>
+                    <p class="text-slate-400 text-sm">Scenic destinations</p>
+                </div>
+                
+                <div class="card-hover bg-slate-800/50 p-6 rounded-xl backdrop-blur-sm border border-slate-700 text-center reveal">
+                    <i class="fas fa-camera text-green-400 text-3xl mb-4"></i>
+                    <h4 class="text-lg font-semibold mb-2">Food Stories</h4>
+                    <p class="text-slate-400 text-sm">Culinary adventures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Stats Section -->
+    <section id="journey" class="py-20 bg-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Our <span class="text-orange-400">Journey</span></h2>
+                <p class="text-xl text-slate-400">Adventures across continents and digital frontiers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center reveal">
+                    <div class="text-4xl font-bold text-orange-400 mb-2 counter" data-target="3">0</div>
+                    <p class="text-slate-400">Countries Explored</p>
+                    <p class="text-sm text-slate-500 mt-1">India, Malaysia, Indonesia</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="text-4xl font-bold text-blue-400 mb-2 counter" data-target="20">0</div>
+                    <p class="text-slate-400">Indian States</p>
+                    <p class="text-sm text-slate-500 mt-1">From Kerala to Kashmir</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="text-4xl font-bold text-green-400 mb-2 counter" data-target="15">0</div>
+                    <p class="text-slate-400">Himalayan Treks</p>
+                    <p class="text-sm text-slate-500 mt-1">High altitude adventures</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 counter" data-target="100">0</div>
+                    <p class="text-slate-400">Tech Reviews</p>
+                    <p class="text-sm text-slate-500 mt-1">AI & gadget insights</p>
+                </div>
+            </div>
+            
+            <!-- Map Visualization -->
+            <div class="bg-slate-700/50 rounded-2xl p-8 backdrop-blur-sm border border-slate-600 reveal">
+                <h3 class="text-2xl font-bold mb-6 text-center">Countries Visited</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="flex items-center space-x-4 p-4 bg-slate-800/50 rounded-xl">
+                        <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">IN</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">India</h4>
+                            <p class="text-slate-400 text-sm">Home base & 20+ states</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-4 bg-slate-800/50 rounded-xl">
+                        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">MY</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Malaysia</h4>
+                            <p class="text-slate-400 text-sm">Cultural diversity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-4 bg-slate-800/50 rounded-xl">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">ID</span>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Indonesia</h4>
+                            <p class="text-slate-400 text-sm">Island adventures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe Section -->
+    <section class="py-20 orange-gradient">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Ready to Explore?</h2>
+                <p class="text-xl mb-8 text-white/90">Join our community of curious minds and adventurous souls!</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://youtube.com" target="_blank" class="bg-red-600 px-8 py-4 rounded-full font-semibold hover:bg-red-700 transition-all transform hover:scale-105 flex items-center space-x-2 text-white">
+                        <i class="fab fa-youtube text-xl"></i>
+                        <span>Subscribe on YouTube</span>
+                    </a>
+                    <button class="bg-white/20 backdrop-blur-sm px-8 py-4 rounded-full font-semibold hover:bg-white/30 transition-all transform hover:scale-105 text-white border border-white/30">
+                        Get Notifications
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">Get In <span class="text-orange-400">Touch</span></h2>
+                <p class="text-xl text-slate-400">Let's collaborate on the next adventure!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="reveal">
+                    <h3 class="text-2xl font-bold mb-6">Connect With Us</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 orange-gradient rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Location</p>
+                                <p class="text-slate-400">Kerala, India</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
+                                <i class="fab fa-youtube text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">YouTube</p>
+                                <p class="text-slate-400">Trek n Tech</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
+                                <i class="fas fa-globe text-white"></i>
+                            </div>
+                            <div>
+                                <p class="font-semibold">Content Focus</p>
+                                <p class="text-slate-400">AI, Travel, Food</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <form class="space-y-6">
+                        <div>
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-400 focus:outline-none">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-400 focus:outline-none">
+                        </div>
+                        <div>
+                            <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-orange-400 focus:outline-none resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full orange-gradient py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-8 h-8 orange-gradient rounded-full flex items-center justify-center">
+                    <i class="fas fa-mountain text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold">Trek n Tech</span>
+            </div>
+            <p class="text-slate-400 mb-4">Where Curiosity Meets Adventure</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors">
+                    <i class="fab fa-youtube text-xl"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-orange-400 transition-colors">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+            </div>
+            <p class="text-slate-500 text-sm mt-4">&copy; 2025 Trek n Tech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            // Typing animation
+            const phrases = ["Curiosity Meets Adventure", "Tech Meets Travel", "Innovation Meets Exploration"];
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function typeText() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (isDeleting) {
+                    $('.typing-text').text(currentPhrase.substring(0, charIndex - 1));
+                    charIndex--;
+                } else {
+                    $('.typing-text').text(currentPhrase.substring(0, charIndex + 1));
+                    charIndex++;
+                }
+                
+                if (!isDeleting && charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeText, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeText, 500);
+                } else {
+                    setTimeout(typeText, isDeleting ? 50 : 100);
+                }
+            }
+            
+            typeText();
+            
+            // Mobile menu toggle
+            $('#mobile-menu-btn').click(function() {
+                $('#mobile-menu').toggleClass('hidden');
+            });
+            
+            // Smooth scrolling
+            $('a[href^="#"]').click(function(e) {
+                e.preventDefault();
+                const target = $($(this).attr('href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 70
+                    }, 800);
+                }
+                $('#mobile-menu').addClass('hidden');
+            });
+            
+            // Counter animation
+            function animateCounters() {
+                $('.counter').each(function() {
+                    const $this = $(this);
+                    const target = parseInt($this.data('target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+                    
+                    const timer = setInterval(function() {
+                        current += step;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        $this.text(Math.floor(current) + '+');
+                    }, 16);
+                });
+            }
+            
+            // Reveal animation on scroll
+            function revealOnScroll() {
+                $('.reveal').each(function() {
+                    const elementTop = $(this).offset().top;
+                    const windowBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (elementTop < windowBottom - 100) {
+                        $(this).addClass('active');
+                    }
+                });
+            }
+            
+            // Trigger counter animation when journey section is visible
+            let countersTriggered = false;
+            function checkCounters() {
+                const journeySection = $('#journey');
+                if (journeySection.length) {
+                    const sectionTop = journeySection.offset().top;
+                    const windowBottom = $(window).scrollTop() + $(window).height();
+                    
+                    if (sectionTop < windowBottom - 200 && !countersTriggered) {
+                        animateCounters();
+                        countersTriggered = true;
+                    }
+                }
+            }
+            
+            // Scroll events
+            $(window).scroll(function() {
+                revealOnScroll();
+                checkCounters();
+                
+                // Navigation background
+                if ($(window).scrollTop() > 50) {
+                    $('nav').addClass('bg-slate-900/95');
+                } else {
+                    $('nav').removeClass('bg-slate-900/95');
+                }
+            });
+            
+            // Initial reveal check
+            revealOnScroll();
+            
+            // Form submission
+            $('form').submit(function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                this.reset();
+            });
+            
+            // Add some interactive hover effects
+            $('.card-hover').hover(
+                function() {
+                    $(this).find('i').addClass('animate-pulse');
+                },
+                function() {
+                    $(this).find('i').removeClass('animate-pulse');
+                }
+            );
+        });
+    </script>
+</body>
+</html>
